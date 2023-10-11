@@ -36,15 +36,16 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 dataManager.saveDataToFile(inputField.getText().toString());
-                    /* file
-                    SharedPreferences.Editor editor = sp.edit();
 
-                    String s = inputField.getText().toString();
+                /* file
+                SharedPreferences.Editor editor = sp.edit();
 
-                    editor.putString("saved", s);
+                String s = inputField.getText().toString();
 
-                    editor.apply();
-                    */
+                editor.putString("saved", s);
+
+                editor.apply();
+                */
             }
         });
 
@@ -53,13 +54,12 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 String text = dataManager.loadFromFile();
                 displayText.setText(text);
+            /*
+            String s = sp.getString("saved", "no key found");
+
+            displayText.setText(s);
+            */
             }
-                /*
-                String s = sp.getString("saved", "no key found");
-
-                displayText.setText(s);
-
-                */
         });
     }
 }
