@@ -15,7 +15,7 @@ public class MainActivity extends AppCompatActivity {
     TextView displayText;
     Button saveButton;
     Button loadButton;
-
+    DataManager dataManager;
     SharedPreferences sp;
 
     @Override
@@ -28,11 +28,15 @@ public class MainActivity extends AppCompatActivity {
         loadButton = findViewById(R.id.btn_load);
         saveButton = findViewById(R.id.btn_save);
 
-        sp = getSharedPreferences("com.example.sharedreferences", MODE_PRIVATE);
+        dataManager = new DataManager(this);
+
+        //sp = getSharedPreferences("com.example.sharedreferences", MODE_PRIVATE);
 
         saveButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                dataManager.saveDataToFile(inputField.getText().toString());
+                    /* file
                     SharedPreferences.Editor editor = sp.edit();
 
                     String s = inputField.getText().toString();
@@ -40,16 +44,22 @@ public class MainActivity extends AppCompatActivity {
                     editor.putString("saved", s);
 
                     editor.apply();
+                    */
             }
         });
 
         loadButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String s = sp.getString("saved", "no key found");
-                displayText.setText(s);
+                String text = dataManager.loadFromFile();
+                displayText.setText(text);
             }
+                /*
+                String s = sp.getString("saved", "no key found");
 
+                displayText.setText(s);
+
+                */
         });
     }
 }
