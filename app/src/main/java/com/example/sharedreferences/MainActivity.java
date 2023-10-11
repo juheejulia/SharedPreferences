@@ -49,6 +49,7 @@ public class MainActivity extends AppCompatActivity {
                 String s = sp.getString("saved", "no key found");
                 displayText.setText(s);
             }
+
         });
     }
 }
